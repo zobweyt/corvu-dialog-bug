@@ -1,6 +1,5 @@
-import { createEffect, createSignal, For, type VoidComponent } from 'solid-js'
+import { createEffect, createSignal, type VoidComponent } from 'solid-js'
 import Dialog from '@corvu/dialog'
-import { ToggleGroup } from '@kobalte/core/toggle-group'
 
 const DialogExample: VoidComponent = () => {
   const [selectedItem, setSelectedItem] = createSignal<string | null>(null)
@@ -12,18 +11,12 @@ const DialogExample: VoidComponent = () => {
 
   return (
     <>
-      <ToggleGroup value={selectedItem()} onChange={setSelectedItem}>
-        <For each={[1, 2, 3]}>
-          {(item) => (
-            <ToggleGroup.Item
-              value={item.toString()}
-              class="my-auto rounded-lg bg-corvu-100 px-4 py-3 text-lg font-medium transition-all duration-100 hover:bg-corvu-200 active:translate-y-0.5 slide-in-from-top-2"
-            >
-              Item #{item}
-            </ToggleGroup.Item>
-          )}
-        </For>
-      </ToggleGroup>
+      <button
+        onPointerDown={() => setSelectedItem('item')}
+        class="my-auto rounded-lg bg-corvu-100 px-4 py-3 text-lg font-medium transition-all duration-100 hover:bg-corvu-200 active:translate-y-0.5 slide-in-from-top-2"
+      >
+        Item
+      </button>
 
       <Dialog
         open={selectedItem() !== null}
