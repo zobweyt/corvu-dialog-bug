@@ -1,9 +1,14 @@
-import { createSignal, For, type VoidComponent } from 'solid-js'
+import { createEffect, createSignal, For, type VoidComponent } from 'solid-js'
 import Dialog from '@corvu/dialog'
 import { ToggleGroup } from '@kobalte/core/toggle-group'
 
 const DialogExample: VoidComponent = () => {
   const [selectedItem, setSelectedItem] = createSignal<string | null>(null)
+
+  createEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log(selectedItem())
+  })
 
   return (
     <>
